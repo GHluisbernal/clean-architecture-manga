@@ -30,9 +30,7 @@ We also support the React client:
 ## Build & Run
 
 ```sh
-pushd src/WebApi/ClientApp
-npm install
-popd
+npm --prefix ./src/WebApi/ClientApp install ./src/WebApi/ClientApp
 dotnet run --project src/WebApi/WebApi.csproj --launch-profile Development
 ```
 
