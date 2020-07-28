@@ -1,8 +1,8 @@
-import * as React from "react";
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
 import { ApplicationState } from "../store";
 import * as UserStore from "../store/User";
-import { Link } from "react-router-dom";
 import { NavItem, NavLink } from "reactstrap";
 
 type UserProps =
@@ -52,11 +52,11 @@ class LoginStatus extends React.PureComponent<UserProps> {
                 <React.Fragment>
                     <NavItem>
                         <button className="text-dark nav-link" onClick={this.loginWithGitHub.bind(this)
-}>Login with GitHub</button>
+                        }>Login with GitHub</button>
                     </NavItem>
                     <NavItem>
                         <button className="text-dark nav-link" onClick={this.loginWithGoogle.bind(this)
-}>Login with Google</button>
+                        }>Login with Google</button>
                     </NavItem>
                 </React.Fragment>
             );
