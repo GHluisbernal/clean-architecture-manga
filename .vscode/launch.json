@@ -5,10 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch IdentityServer",
+            "type": "chrome",
+            "request": "launch",
+            "url": "https://localhost:5000",
+            "webRoot": "${workspaceFolder}/src/IdentityServer"
+        },
+        {
             "name": "Launch localhost",
             "type": "chrome",
             "request": "launch",
-            "url": "https://localhost:5001",
+            "url": "https://localhost:5005",
             "webRoot": "${workspaceFolder}/src/WebApi/ClientApp"
         },
         {
@@ -16,7 +23,7 @@
             "type": "chrome",
             "request": "attach",
             "port": 9222,
-            "url": "https://localhost:5001",
+            "url": "https://localhost:5005",
             "webRoot": "${workspaceFolder}/src/WebApi/ClientApp"
         },
         {
