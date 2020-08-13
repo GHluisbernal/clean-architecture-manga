@@ -37,9 +37,10 @@ namespace WebApi
             .AddVersioning()
             .AddSwagger()
             .AddUseCases()
-            .AddCustomControllers()            
+            .AddCustomControllers()
+            .AddCustomCors()
             .AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });
-            
+
         /// <summary>
         ///     Configure http request pipeline.
         /// </summary>
@@ -61,6 +62,7 @@ namespace WebApi
             app.UseSpaStaticFiles();
 
             app.UseHttpsRedirection()
+                .UseCustomCors()
                 .UseStaticFiles()
                 .UseMetricServer()
                 .UseMangaHttpMetrics()
@@ -69,7 +71,7 @@ namespace WebApi
                 .UseAuthentication()
                 .UseAuthorization()
                 .UseHealthChecks()
-                .UseEndpoints(endpoints => { endpoints.MapControllers(); })                
+                .UseEndpoints(endpoints => { endpoints.MapControllers(); })
                 .UseSpa(spa =>
                 {
                     spa.Options.SourcePath = "ClientApp";

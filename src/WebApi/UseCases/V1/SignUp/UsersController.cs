@@ -1,11 +1,17 @@
 namespace WebApi.UseCases.V1.SignUp
 {
+    using System;
+    using System.IdentityModel.Tokens.Jwt;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Security.Claims;
+    using System.Text;
     using System.Threading.Tasks;
     using Application.UseCases.SignUp;
     using Domain.Security;
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.IdentityModel.Tokens;
     using Modules.Common;
     using ViewModels;
 
@@ -34,21 +40,42 @@ namespace WebApi.UseCases.V1.SignUp
         /// <response code="200">User already exists.</response>
         /// <response code="201">The user was created successfully.</response>
         /// <response code="400">Bad request.</response>
-        /// <param name="useCase">Use case.</param>
+        /// <param name="userDetails"></param>
         /// <returns>The user.</returns>
-        [Authorize]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SignUpCustomerResponse))]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(SignUpCustomerResponse))]
         [ApiConventionMethod(typeof(CustomApiConventions), nameof(CustomApiConventions.Post))]
-        public async Task<IActionResult> Post([FromServices] ISignUpUseCase useCase)
+        public async Task<IActionResult> Post(UserDetails userDetails)
         {
-            useCase.SetOutputPort(this);
+            var request = new HttpRequestMessage(HttpMethod.Get,"https://www.googleapis.com/oauth2/v2/userinfo");
+            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", userDetails.Token);
 
-            await useCase.Execute()
+            using HttpClient client = new HttpClient();
+            using HttpResponseMessage response = await client.SendAsync(request)
                 .ConfigureAwait(false);
+            using HttpContent content = response.Content;
+            var json = await content.ReadAsStringAsync()
+                .ConfigureAwait(false);
+            var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("81536155-7e6e-420f-a7f0-404fbe2a8d93"));
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, userDetails.Name)
+                }),
+                Expires = DateTime.UtcNow.AddYears(2),
+                Issuer = "MyWebsite.com",
+                Audience = "MyWebsite.com",
+                SigningCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var accessToken = tokenHandler.WriteToken(token);
 
-            return this._viewModel!;
+            // Returns the 'access_token' and the type in lower case
+            return this.Ok(new { accessToken, token_type="bearer" });
         }
     }
 }
