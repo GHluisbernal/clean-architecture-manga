@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace SPA
+namespace SPAgi
 {
     public class Startup
     {
@@ -22,6 +22,29 @@ namespace SPA
         {
 
             services.AddControllersWithViews();
+
+            services.AddMvcCore()
+                .AddAuthorization();
+
+            services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = "https://localhost:5000";
+                    options.RequireHttpsMetadata = false;
+
+                    options.ApiName = "ProduceAPI";
+                });
+
+            services.AddCors(options =>
+            {
+                // this defines a CORS policy called "default"
+                options.AddPolicy("default", policy =>
+                {
+                    policy.WithOrigins("https://localhost:5010")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -45,8 +68,11 @@ namespace SPA
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseCors("default");
+            app.UseAuthentication();
 
             app.UseRouting();
 
