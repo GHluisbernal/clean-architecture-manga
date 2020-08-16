@@ -1,26 +1,74 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import * as axios from "axios";
 
-export class Home extends Component {
-  static displayName = Home.name;
+export class Home extends PureComponent {
+    static displayName = Home.name;
 
-  render () {
-    return (
-      <div>
-        <h1>Hello, world!</h1>
-        <p>Welcome to your new single-page application, built with:</p>
-        <ul>
-          <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>
-          <li><a href='https://facebook.github.io/react/'>React</a> for client-side code</li>
-          <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>
-        </ul>
-        <p>To help you get started, we have also set up:</p>
-        <ul>
-          <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>
-          <li><strong>Development server integration</strong>. In development mode, the development server from <code>create-react-app</code> runs in the background automatically, so your client-side resources are dynamically built on demand and the page refreshes when you modify any file.</li>
-          <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and your <code>dotnet publish</code> configuration produces minified, efficiently bundled JavaScript files.</li>
-        </ul>
-        <p>The <code>ClientApp</code> subdirectory is a standard React application based on the <code>create-react-app</code> template. If you open a command prompt in that directory, you can run <code>npm</code> commands such as <code>npm test</code> or <code>npm install</code>.</p>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.performLogin = this.performLogin.bind(this);
+        this.performLogout = this.performLogout.bind(this);
+        this.renderUserDetails = this.renderUserDetails.bind(this);
+
+        this.state = {
+            isLoggedIn: false,
+            userName: null,
+            produceItems: []
+        }
+    }
+
+    componentDidMount() {
+        this.props.openIdManager.getUser().then((user) => {
+            if (user) {
+                this.setState({ isLoggedIn: true, userName: user.profile.preferred_username });
+                axios.get('/api/values', {
+                    baseURL: 'https://localhost:5005',
+                    headers: { 'Authorization': 'Bearer ' + user.access_token }
+                }).then((response) => {
+                    this.setState({ produceItems: response.data })
+                }).catch(e => console.error(e))
+            } else {
+                this.setState({ isLoggedIn: false, userName: null, produceItems: [] });
+            }
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                {!this.state.isLoggedIn && <button id="login" onClick={this.performLogin}>Login</button>}
+
+                {this.state.isLoggedIn && <button id="logout" onClick={this.performLogout}>Logout</button>}
+
+                <div
+                    className="info">{this.state.isLoggedIn ? this.renderUserDetails() : "User is not logged in."}</div>
+
+                <pre id="results"></pre>
+            </div>
+        );
+    }
+
+    performLogin() {
+        this.props.openIdManager.signinRedirect();
+    }
+
+    performLogout() {
+        this.props.openIdManager.signoutRedirect();
+    }
+
+    renderUserDetails() {
+        return (
+            <React.Fragment>
+                <div>User is logged in as:</div>
+                <div>{this.state.userName}</div>
+                <hr />
+
+                <div>(Auth Protected Resources)</div>
+                <div>My Produce Items</div>
+                {this.state.produceItems.map((produceItem) => {
+                    return <div>{produceItem}</div>
+                })}
+            </React.Fragment>
+        )
+    }
 }

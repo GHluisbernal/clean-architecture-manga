@@ -11,20 +11,19 @@ const rootElement = document.getElementById('root');
 
 const config = {
     authority: "https://localhost:5000",
-    client_id: "produce-spa",
+    client_id: "spa",
     redirect_uri: "https://localhost:5010/callback",
     response_type: "code",
-    scope:"openid profile ProduceAPI",
-    post_logout_redirect_uri : "https://localhost:5010",
+    scope: "openid profile api1",
+    post_logout_redirect_uri: "https://localhost:5010",
 };
 
 const openIdManager = new Oidc.UserManager(config);
 
 ReactDOM.render(
-  <BrowserRouter basename={baseUrl}>
-    <App openIdManager={openIdManager} />
-  </BrowserRouter>,
-  rootElement);
+    <BrowserRouter basename={baseUrl}>
+        <App openIdManager={openIdManager} />
+    </BrowserRouter>,
+    rootElement);
 
 registerServiceWorker();
-
