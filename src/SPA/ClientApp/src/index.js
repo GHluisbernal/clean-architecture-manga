@@ -14,7 +14,7 @@ const config = {
     client_id: "spa",
     redirect_uri: "https://localhost:5010/callback",
     response_type: "code",
-    scope: "openid profile api1",
+    scope: "openid profile api1.full_access",
     post_logout_redirect_uri: "https://localhost:5010",
 };
 

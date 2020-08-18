@@ -42,21 +42,6 @@ namespace WebApi.Modules.Common.Swagger
                     c.IncludeXmlComments(XmlCommentsFilePath);
                     c.OperationFilter<SecurityRequirementsOperationFilter>();
 
-                    c.AddSecurityDefinition("oauth2",
-                        new OpenApiSecurityScheme
-                        {
-                            Type = SecuritySchemeType.OAuth2,
-                            Flows = new OpenApiOAuthFlows
-                            {
-                                Implicit = new OpenApiOAuthFlow
-                                {
-                                    TokenUrl = new Uri("https://www.googleapis.com/oauth2/v4/token"),
-                                    AuthorizationUrl =
-                                        new Uri("https://accounts.google.com/o/oauth2/v2/auth"),
-                                    Scopes = {{"openid", "OpenID"}, {"profile", "Profile"}, {"email", "E-mail"}}
-                                }
-                            }
-                        });
                 });
 
             return services;
@@ -80,8 +65,6 @@ namespace WebApi.Modules.Common.Swagger
                             description.GroupName.ToUpperInvariant());
                     }
 
-                    options.OAuthClientId(configuration["AuthenticationModule:Google:ClientId"]);
-                    options.OAuthClientSecret(configuration["AuthenticationModule:Google:ClientSecret"]);
                 });
 
             return app;

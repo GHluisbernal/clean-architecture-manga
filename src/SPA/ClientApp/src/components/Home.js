@@ -21,7 +21,7 @@ export class Home extends PureComponent {
         this.props.openIdManager.getUser().then((user) => {
             if (user) {
                 this.setState({ isLoggedIn: true, userName: user.profile.preferred_username });
-                axios.get('/api/values', {
+                axios.get('/api/v1/Accounts', {
                     baseURL: 'https://localhost:5005',
                     headers: { 'Authorization': 'Bearer ' + user.access_token }
                 }).then((response) => {

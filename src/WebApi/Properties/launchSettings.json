@@ -10,7 +10,7 @@
             "environmentVariables": {
                 "ASPNETCORE_ENVIRONMENT": "Production"
             },
-            "applicationUrl": "https://localhost:5001"
+            "applicationUrl": "https://localhost:5005"
         },
         "Development": {
             "commandName": "Project",
@@ -18,7 +18,7 @@
             "environmentVariables": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
-            "applicationUrl": "https://localhost:5001"
+            "applicationUrl": "https://localhost:5005"
         }
     }
 }

@@ -3,7 +3,6 @@ namespace WebApi
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc.ApiExplorer;
-    using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
@@ -38,8 +37,7 @@ namespace WebApi
             .AddSwagger()
             .AddUseCases()
             .AddCustomControllers()
-            .AddCustomCors()
-            .AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });
+            .AddCustomCors();
 
         /// <summary>
         ///     Configure http request pipeline.
@@ -59,8 +57,6 @@ namespace WebApi
                     .UseHsts();
             }
 
-            app.UseSpaStaticFiles();
-
             app.UseHttpsRedirection()
                 .UseCustomCors()
                 .UseStaticFiles()
@@ -71,15 +67,7 @@ namespace WebApi
                 .UseAuthentication()
                 .UseAuthorization()
                 .UseHealthChecks()
-                .UseEndpoints(endpoints => { endpoints.MapControllers(); })
-                .UseSpa(spa =>
-                {
-                    spa.Options.SourcePath = "ClientApp";
-                    if (env.IsDevelopment())
-                    {
-                        spa.UseReactDevelopmentServer("start");
-                    }
-                });
+                .UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }
