@@ -29,35 +29,53 @@ We also support the React client:
 
 ## Build & Run
 
-```sh
-npm --prefix ./src/WebApi/ClientApp install ./src/WebApi/ClientApp
-dotnet run --project src/WebApi/WebApi.csproj --launch-profile Development
-```
-
-Then authenticate into the API by browsing to `https://localhost:5001/api/v1/Login/Google?returnUrl=%2Fswagger%2Findex.html`.
-
-- App: `http://localhost:5001`
-- Swagger: `http://localhost:5001/swagger/index.html`
-
-or try the Docker approach:
+### Spin up SQL Server in a Docker container
 
 ```sh
-docker build -t my-app . -f src/WebApi/Dockerfile
-docker run -p 6001:80 my-app
+docker pull mcr.microsoft.com/mssql/server:2017-latest
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 --name sql1 -d mcr.microsoft.com/mssql/server:2017-latest
 ```
 
-- App: `http://localhost:6001`
-- Swagger: `http://localhost:6001/swagger/index.html`
-
-## Production Environment Setup
+### Create and Seed Accounts Database
 
 ```sh
-dotnet ef migrations add "InitialCreate" -o "DataAccess/Migrations" --project src/Infrastructure --startup-project src/Infrastructure
+dotnet tool update --global dotnet-ef --version 3.1.6
+dotnet ef database update --project accounts-api/src/Infrastructure --startup-project accounts-api/src/WebApi
 ```
 
+### Running Services
+
+#### Identity Server
+
 ```sh
-dotnet ef database update --project src/Infrastructure --startup-project src/Infrastructure
+dotnet run --project identity-server/src/IdentityServer.csproj
 ```
+#### Account API
+
+```sh
+dotnet run --project accounts-api/src/WebApi/WebApi.csproj
+```
+
+#### Wallett SPA
+
+```sh
+pushd wallet-spa/src/ClientApp
+npm install
+popd
+dotnet run --project wallet-spa/src/WalletSPA.csproj --launch-profile WalletSPA
+```
+
+The services should be runnning on the following endpoints:
+
+| Protocol 	| Port 	| Application 	    |
+|-	|-	    |-	|-	| -	|-
+| HTTPS     | 5000 	| Identity Server 	|
+| HTTPS     | 5005 	| Accounts API 	    |
+| HTTPS     | 5010 	| Wallet SPA 	    |
+
+### Get Started
+
+Browse to `https://localhost:5010` and click on Log In.
 
 ## Motivation
 
