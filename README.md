@@ -37,11 +37,11 @@ docker-compose up
 
 Then the following services should be runnning:
 
-| Protocol 	| Port 	| Application 	    |
-|-	|-	    |-	|-	| -	|-
-| HTTPS     | 5000 	| Identity Server 	|
-| HTTPS     | 5005 	| Accounts API 	    |
-| HTTPS     | 5010 	| Wallet SPA 	    |
+| Protocol 	| Port 	| Application 	|
+|-	|-	|-	|
+| HTTPS 	| 5000 	| Identity Server 	|
+| HTTPS 	| 5005 	| Accounts API 	|
+| HTTPS 	| 5010 	| Wallet SPA 	|
 
 Browse to `https://localhost:5010` and click on Log In. If you are move familiar with dotnet commands, start each service individually:
 
