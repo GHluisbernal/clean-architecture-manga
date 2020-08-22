@@ -29,6 +29,25 @@ We also support the React client:
 
 ## Build & Run
 
+Run the following command:
+
+```sh
+docker-compose up
+```
+
+Then the following services should be runnning:
+
+| Protocol 	| Port 	| Application 	    |
+|-	|-	    |-	|-	| -	|-
+| HTTPS     | 5000 	| Identity Server 	|
+| HTTPS     | 5005 	| Accounts API 	    |
+| HTTPS     | 5010 	| Wallet SPA 	    |
+
+Browse to `https://localhost:5010` and click on Log In. If you are move familiar with dotnet commands, start each service individually:
+
+<details>
+    <summary>Expand to get the dotnet run steps.</summary>
+
 ### Spin up SQL Server in a Docker container
 
 ```sh
@@ -65,17 +84,7 @@ popd
 dotnet run --project wallet-spa/src/WalletSPA.csproj --launch-profile WalletSPA
 ```
 
-The services should be runnning on the following endpoints:
-
-| Protocol 	| Port 	| Application 	    |
-|-	|-	    |-	|-	| -	|-
-| HTTPS     | 5000 	| Identity Server 	|
-| HTTPS     | 5005 	| Accounts API 	    |
-| HTTPS     | 5010 	| Wallet SPA 	    |
-
-### Get Started
-
-Browse to `https://localhost:5010` and click on Log In.
+</details>
 
 ## Motivation
 
