@@ -12,9 +12,9 @@ services:
       context: .
       dockerfile: identity-server/src/Dockerfile
   wallet-spa:
-    image: ${DOCKER_REGISTRY-}wallet
-    build:
-      context: .
-      dockerfile: wallet-spa/src/Dockerfile
+   image: ${DOCKER_REGISTRY-}wallet
+   build:
+     context: .
+     dockerfile: my-app/Dockerfile
   sql1:
     image: "mcr.microsoft.com/mssql/server:2017-latest"

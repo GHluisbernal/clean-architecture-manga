@@ -26,14 +26,6 @@ services:
   wallet-spa:
     ports:
       - "5010:5010"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:5010
-      - ASPNETCORE_HTTPS_PORT=5010
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=MyCertificatePassword
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
-    volumes:
-      - ${USERPROFILE}\.aspnet\https:/https:ro
   sql1:
     environment:
         SA_PASSWORD: "<YourStrong!Passw0rd>"
