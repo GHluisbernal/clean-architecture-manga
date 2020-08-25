@@ -24,6 +24,8 @@ services:
     volumes:
       - ${USERPROFILE}\.aspnet\https:/https:ro
   wallet-spa:
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
     ports:
       - "5010:5010"
   sql1:

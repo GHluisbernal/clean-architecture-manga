@@ -34,18 +34,18 @@ Run the following command:
 ```sh
 dotnet dev-certs https --clean
 dotnet dev-certs https -ep $env:USERPROFILE\.aspnet\https\aspnetapp.pfx -p MyCertificatePassword
-docker-compose build
-docker-compose up
+docker-compose -f docker-compose/docker-compose.yml build
+docker-compose -f docker-compose/docker-compose.yml up
 ```
 
-Then the following services should be runnning:
+Then the following containers should be runnning:
 
-| Protocol | Port 	| Application 	    |
-|--------- |-------	|------------------ |
-| HTTPS 	 | 5000 	| Identity Server 	|
-| HTTPS 	 | 5005 	| Accounts API 	    |
-| HTTPS 	 | 5010 	| Wallet SPA 	      |
-| TCP 	   | 5033 	| SQL Server 	      |
+| Application 	    | Protocol | Port 	|
+|------------------ |--------- |-------	|
+| Wallet SPA 	      | HTTPS 	 | 5010 	|
+| Accounts API 	    | HTTPS 	 | 5005 	|
+| Identity Server 	| HTTPS 	 | 5000 	|
+| SQL Server 	      | TCP 	   | 5033 	|
 
 Browse to `https://localhost:5010` and click on Log In. If you are move familiar with dotnet commands, start each service individually:
 
