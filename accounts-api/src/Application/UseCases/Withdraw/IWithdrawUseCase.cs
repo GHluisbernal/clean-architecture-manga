@@ -4,6 +4,7 @@
 
 namespace Application.UseCases.Withdraw
 {
+    using System;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -17,10 +18,12 @@ namespace Application.UseCases.Withdraw
     public interface IWithdrawUseCase
     {
         /// <summary>
+        /// Executes the use case.
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task Execute(WithdrawInput input);
+        /// <param name="accountId">AccountId.</param>
+        /// <param name="amount">Positive amount to withdraw.</param>
+        /// <param name="currency">Currency from amount.</param>
+        Task Execute(Guid accountId, decimal amount, string currency);
 
         /// <summary>
         ///     Sets the Output Port.

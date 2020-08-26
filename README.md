@@ -34,8 +34,9 @@ Run the following command:
 ```sh
 dotnet dev-certs https --clean
 dotnet dev-certs https -ep $env:USERPROFILE\.aspnet\https\aspnetapp.pfx -p MyCertificatePassword
-docker-compose -f docker-compose/docker-compose.yml build
-docker-compose -f docker-compose/docker-compose.yml up
+cd ./docker
+docker-compose build
+docker-compose up
 ```
 
 Then the following containers should be runnning:

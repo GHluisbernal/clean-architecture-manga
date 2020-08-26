@@ -58,7 +58,7 @@ namespace WebApi.UseCases.V1.Accounts.OpenAccount
         {
             useCase.SetOutputPort(this);
 
-            await useCase.Execute(new OpenAccountInput(amount, currency))
+            await useCase.Execute(amount, currency)
                 .ConfigureAwait(false);
 
             return this._viewModel!;

@@ -36,8 +36,10 @@ namespace Application.UseCases.OpenAccount
         public void SetOutputPort(IOutputPort outputPort) => this._outputPort = outputPort;
 
         /// <inheritdoc />
-        public Task Execute(OpenAccountInput input)
+        public Task Execute(decimal amount, string currency)
         {
+            var input = new OpenAccountInput(amount, currency);
+
             if (input.ModelState.IsValid)
             {
                 return this.OpenAccountInternal(input.Amount);

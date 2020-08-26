@@ -4,6 +4,7 @@
 
 namespace Application.UseCases.Transfer
 {
+    using System;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -17,10 +18,9 @@ namespace Application.UseCases.Transfer
     public interface ITransferUseCase
     {
         /// <summary>
+        ///     Executes the use case.
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task Execute(TransferInput input);
+        Task Execute(Guid originAccountId, Guid destinationAccountId, decimal amount, string currency);
 
         /// <summary>
         ///     Sets the Output Port.

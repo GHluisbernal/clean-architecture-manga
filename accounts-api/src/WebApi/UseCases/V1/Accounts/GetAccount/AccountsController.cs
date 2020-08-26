@@ -53,7 +53,7 @@ namespace WebApi.UseCases.V1.Accounts.GetAccount
         {
             useCase.SetOutputPort(this);
 
-            await useCase.Execute(new GetAccountInput(accountId))
+            await useCase.Execute(accountId)
                 .ConfigureAwait(false);
 
             return this._viewModel!;

@@ -11,12 +11,12 @@ namespace Application.UseCases.Transfer
     /// <summary>
     ///     Transfer Input Message.
     /// </summary>
-    public sealed class TransferInput
+    internal sealed class TransferInput
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="TransferInput" /> class.
         /// </summary>
-        public TransferInput(Guid originAccountId, Guid destinationAccountId, decimal amount, string currency)
+        internal TransferInput(Guid originAccountId, Guid destinationAccountId, decimal amount, string currency)
         {
             this.ModelState = new Notification();
 

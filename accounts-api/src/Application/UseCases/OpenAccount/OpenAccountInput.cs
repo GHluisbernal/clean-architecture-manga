@@ -10,7 +10,7 @@ namespace Application.UseCases.OpenAccount
     /// <summary>
     ///     Open Account Input Message.
     /// </summary>
-    public sealed class OpenAccountInput
+    internal sealed class OpenAccountInput
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="OpenAccountInput" /> class.

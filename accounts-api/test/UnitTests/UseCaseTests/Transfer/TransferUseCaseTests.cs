@@ -28,11 +28,11 @@ namespace UnitTests.UseCaseTests.Transfer
 
             sut.SetOutputPort(presenter);
 
-            await sut.Execute(new TransferInput(
+            await sut.Execute(
                 SeedData.DefaultAccountId.Id,
                 SeedData.SecondAccountId.Id,
                 amount,
-                "USD"));
+                "USD");
 
             Account? actual = presenter.OriginAccount!;
             Assert.Equal(expectedOriginBalance, actual.GetCurrentBalance().Amount);

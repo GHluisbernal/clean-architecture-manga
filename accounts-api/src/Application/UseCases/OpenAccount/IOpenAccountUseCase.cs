@@ -19,9 +19,7 @@ namespace Application.UseCases.OpenAccount
         /// <summary>
         ///     Executes the Use Case
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task Execute(OpenAccountInput input);
+        Task Execute(decimal amount, string currency);
 
         /// <summary>
         ///     Sets the Output Port.

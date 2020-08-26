@@ -29,9 +29,7 @@ namespace UnitTests.UseCaseTests.Withdraw
 
             sut.SetOutputPort(presenter);
 
-            await sut.Execute(
-                new WithdrawInput(
-                    SeedData.DefaultAccountId.Id, amount, "USD"));
+            await sut.Execute(SeedData.DefaultAccountId.Id, amount, "USD");
 
             Account? actual = presenter.Account!;
             Assert.Equal(expectedBalance, actual.GetCurrentBalance().Amount);

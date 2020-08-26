@@ -11,15 +11,13 @@ namespace Application.UseCases.Withdraw
     /// <summary>
     ///     Withdraw Input Message.
     /// </summary>
-    public sealed class WithdrawInput
+    internal sealed class WithdrawInput
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="WithdrawInput" /> class.
         /// </summary>
-        /// <param name="accountId">AccountId.</param>
-        /// <param name="amount">Positive amount to withdraw.</param>
-        /// <param name="currency">Currency from amount.</param>
-        public WithdrawInput(Guid accountId, decimal amount, string currency)
+
+        internal WithdrawInput(Guid accountId, decimal amount, string currency)
         {
             this.ModelState = new Notification();
 

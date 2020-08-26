@@ -24,9 +24,9 @@ namespace UnitTests.UseCaseTests.OpenAccount
 
             sut.SetOutputPort(presenter);
 
-            await sut.Execute(new OpenAccountInput(amount, currency));
+            await sut.Execute(amount, currency);
 
-            Assert.True(presenter.InvalidOutput);
+            Assert.NotNull(presenter.Account);
         }
     }
 }

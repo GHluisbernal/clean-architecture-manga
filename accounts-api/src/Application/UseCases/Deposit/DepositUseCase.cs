@@ -11,14 +11,7 @@ namespace Application.UseCases.Deposit
     using Domain.Accounts.ValueObjects;
     using Services;
 
-    /// <summary>
-    ///     Deposit
-    ///     <see href="https://github.com/ivanpaulovich/clean-architecture-manga/wiki/Domain-Driven-Design-Patterns#use-case">
-    ///         Use
-    ///         Case Domain-Driven Design Pattern
-    ///     </see>
-    ///     .
-    /// </summary>
+    /// <inheritdoc />
     public sealed class DepositUseCase : IDepositUseCase
     {
         private readonly IAccountFactory _accountFactory;
@@ -49,12 +42,11 @@ namespace Application.UseCases.Deposit
         /// <inheritdoc />
         public void SetOutputPort(IOutputPort outputPort) => this._outputPort = outputPort;
 
-        /// <summary>
-        ///     Executes the Use Case.
-        /// </summary>
-        /// <returns>Task.</returns>
-        public Task Execute(DepositInput input)
+        /// <inheritdoc />
+        public Task Execute(Guid accountId, decimal amount, string currency)
         {
+            var input = new DepositInput(accountId, amount, currency);
+
             if (input.ModelState.IsValid)
             {
                 return this.DepositInternal(input.AccountId, input.Amount);

@@ -4,6 +4,7 @@
 
 namespace Application.UseCases.CloseAccount
 {
+    using System;
     using System.Threading.Tasks;
     using Domain.Accounts;
     using Domain.Accounts.ValueObjects;
@@ -38,8 +39,10 @@ namespace Application.UseCases.CloseAccount
         public void SetOutputPort(IOutputPort outputPort) => this._outputPort = outputPort;
 
         /// <inheritdoc />
-        public Task Execute(CloseAccountInput input)
+        public Task Execute(Guid accountId)
         {
+            var input = new CloseAccountInput(accountId);
+
             if (input.ModelState.IsValid)
             {
                 string externalUserId = this._userService

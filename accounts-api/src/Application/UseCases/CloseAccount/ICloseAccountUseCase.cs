@@ -4,6 +4,7 @@
 
 namespace Application.UseCases.CloseAccount
 {
+    using System;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -19,9 +20,9 @@ namespace Application.UseCases.CloseAccount
         /// <summary>
         ///     Executes the use case.
         /// </summary>
-        /// <param name="input">Input.</param>
+        /// <param name="accountId">Account Id.</param>
         /// <returns>Task.</returns>
-        Task Execute(CloseAccountInput input);
+        Task Execute(Guid accountId);
 
         /// <summary>
         ///     Sets the Output Port.

@@ -44,8 +44,14 @@ namespace Application.UseCases.Transfer
         public void SetOutputPort(IOutputPort outputPort) => this._outputPort = outputPort;
 
         /// <inheritdoc />
-        public Task Execute(TransferInput input)
+        public Task Execute(Guid originAccountId, Guid destinationAccountId, decimal amount, string currency)
         {
+            var input = new TransferInput(
+                originAccountId,
+                destinationAccountId,
+                amount,
+                currency);
+
             if (input.ModelState.IsValid)
             {
                 return this.TransferInternal(input.OriginAccountId, input.DestinationAccountId, input.TransferAmount);

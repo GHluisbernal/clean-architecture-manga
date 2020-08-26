@@ -56,7 +56,7 @@ namespace WebApi.UseCases.V1.Accounts.CloseAccount
         {
             useCase.SetOutputPort(this);
 
-            await useCase.Execute(new CloseAccountInput(accountId))
+            await useCase.Execute(accountId)
                 .ConfigureAwait(false);
 
             return this._viewModel!;

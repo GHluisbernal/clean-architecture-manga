@@ -47,8 +47,10 @@ namespace Application.UseCases.Withdraw
         public void SetOutputPort(IOutputPort outputPort) => this._outputPort = outputPort;
 
         /// <inheritdoc />
-        public Task Execute(WithdrawInput input)
+        public Task Execute(Guid accountId, decimal amount, string currency)
         {
+            var input = new WithdrawInput(accountId, amount, currency);
+
             if (input.ModelState.IsValid)
             {
                 return this.WithdrawInternal(input.AccountId, input.Amount);

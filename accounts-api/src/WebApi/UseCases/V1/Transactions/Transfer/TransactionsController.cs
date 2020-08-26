@@ -69,11 +69,11 @@ namespace WebApi.UseCases.V1.Transactions.Transfer
         {
             useCase.SetOutputPort(this);
 
-            await useCase.Execute(new TransferInput(
+            await useCase.Execute(
                     accountId,
                     destinationAccountId,
                     amount,
-                    currency))
+                    currency)
                 .ConfigureAwait(false);
 
             return this._viewModel!;

@@ -11,7 +11,7 @@ namespace Application.UseCases.Deposit
     /// <summary>
     ///     Deposit Input Message.
     /// </summary>
-    public sealed class DepositInput
+    internal sealed class DepositInput
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="DepositInput" /> class.
@@ -19,7 +19,7 @@ namespace Application.UseCases.Deposit
         /// <param name="accountId">AccountId.</param>
         /// <param name="amount">Positive amount to deposit.</param>
         /// <param name="currency">Currency from amount.</param>
-        public DepositInput(Guid accountId, decimal amount, string currency)
+        internal DepositInput(Guid accountId, decimal amount, string currency)
         {
             this.ModelState = new Notification();
 

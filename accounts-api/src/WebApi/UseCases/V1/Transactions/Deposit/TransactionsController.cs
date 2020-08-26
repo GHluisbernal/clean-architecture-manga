@@ -61,7 +61,7 @@ namespace WebApi.UseCases.V1.Transactions.Deposit
         {
             useCase.SetOutputPort(this);
 
-            await useCase.Execute(new DepositInput(accountId, amount, currency))
+            await useCase.Execute(accountId, amount, currency)
                 .ConfigureAwait(false);
 
             return this._viewModel!;

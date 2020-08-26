@@ -11,13 +11,13 @@ namespace Application.UseCases.GetAccount
     /// <summary>
     ///     Get Account Details Input Message.
     /// </summary>
-    public sealed class GetAccountInput
+    internal sealed class GetAccountInput
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="GetAccountInput" /> class.
         /// </summary>
         /// <param name="accountId">Account Id.</param>
-        public GetAccountInput(Guid accountId)
+        internal GetAccountInput(Guid accountId)
         {
             this.ModelState = new Notification();
 

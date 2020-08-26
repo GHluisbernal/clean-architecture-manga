@@ -2,13 +2,13 @@ namespace UnitTests.UseCaseTests.OpenAccount
 {
     using Xunit;
 
-    internal sealed class ValidDataSetup : TheoryData<string, string, string>
+    internal sealed class ValidDataSetup : TheoryData<decimal, string>
     {
         public ValidDataSetup()
         {
-            this.Add("John", "Doe", "198608174444");
-            this.Add("Mary", "Jane", "198608174444");
-            this.Add("Ivan", "Doe", "198608174444");
+            this.Add(100, "SEK");
+            this.Add(25, "BRL");
+            this.Add(10, "USD");
         }
     }
 }

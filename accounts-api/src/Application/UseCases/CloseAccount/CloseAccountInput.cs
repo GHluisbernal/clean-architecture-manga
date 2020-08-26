@@ -11,13 +11,13 @@ namespace Application.UseCases.CloseAccount
     /// <summary>
     ///     Close Account Input Message.
     /// </summary>
-    public sealed class CloseAccountInput
+    internal sealed class CloseAccountInput
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="CloseAccountInput" /> class.
         /// </summary>
         /// <param name="accountId">Account Id.</param>
-        public CloseAccountInput(Guid accountId)
+        internal CloseAccountInput(Guid accountId)
         {
             this.ModelState = new Notification();
 

@@ -4,6 +4,7 @@
 
 namespace Application.UseCases.GetAccount
 {
+    using System;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -19,9 +20,8 @@ namespace Application.UseCases.GetAccount
         /// <summary>
         ///     Executes the Use Case
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task Execute(GetAccountInput input);
+        /// <param name="accountId">Account Id.</param>
+        Task Execute(Guid accountId);
 
         /// <summary>
         ///     Executes the Use Case.

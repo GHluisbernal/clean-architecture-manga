@@ -71,15 +71,15 @@ namespace UnitTests.UseCaseTests.CloseAccount
             sut.SetOutputPort(closeAccountPresenter);
             getAccountUseCase.SetOutputPort(getAccountPresenter);
 
-            await getAccountUseCase.Execute(new GetAccountInput(SeedData.DefaultAccountId.Id));
+            await getAccountUseCase.Execute(SeedData.DefaultAccountId.Id);
             IAccount getAccountDetailOutput = getAccountPresenter.Account!;
 
-            await withdrawUseCase.Execute(new WithdrawInput(
+            await withdrawUseCase.Execute(
                 SeedData.DefaultAccountId.Id,
                 getAccountDetailOutput.GetCurrentBalance().Amount,
-                getAccountDetailOutput.GetCurrentBalance().Currency.Code));
+                getAccountDetailOutput.GetCurrentBalance().Currency.Code);
 
-            await sut.Execute(new CloseAccountInput(SeedData.DefaultAccountId.Id));
+            await sut.Execute(SeedData.DefaultAccountId.Id);
 
             Assert.Equal(SeedData.DefaultAccountId.Id, closeAccountPresenter.Account!.AccountId.Id);
         }

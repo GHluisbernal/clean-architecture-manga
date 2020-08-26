@@ -28,10 +28,9 @@ namespace UnitTests.UseCaseTests.Deposit
             sut.SetOutputPort(presenter);
 
             await sut.Execute(
-                new DepositInput(
                     SeedData.DefaultAccountId.Id,
                     amount,
-                    Currency.Dollar.Code));
+                    Currency.Dollar.Code);
 
             Credit? output = presenter.Credit!;
             Assert.Equal(amount, output.Amount.Amount);
@@ -51,9 +50,9 @@ namespace UnitTests.UseCaseTests.Deposit
             sut.SetOutputPort(presenter);
 
             await sut.Execute(
-                new DepositInput(SeedData.DefaultAccountId.Id,
+                    SeedData.DefaultAccountId.Id,
                     amount,
-                    Currency.Dollar.Code));
+                    Currency.Dollar.Code);
 
             Assert.True(presenter.ModelState!.IsInvalid);
         }

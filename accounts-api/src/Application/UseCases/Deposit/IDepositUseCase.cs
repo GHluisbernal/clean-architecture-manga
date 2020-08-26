@@ -4,6 +4,7 @@
 
 namespace Application.UseCases.Deposit
 {
+    using System;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -19,9 +20,11 @@ namespace Application.UseCases.Deposit
         /// <summary>
         ///     Executes the Use Case.
         /// </summary>
-        /// <param name="input">Input</param>
+        /// <param name="accountId">AccountId.</param>
+        /// <param name="amount">Positive amount to deposit.</param>
+        /// <param name="currency">Currency from amount.</param>
         /// <returns>Task.</returns>
-        Task Execute(DepositInput input);
+        Task Execute(Guid accountId, decimal amount, string currency);
 
         /// <summary>
         ///     Sets the Output Port.
