@@ -2,7 +2,7 @@
 // Copyright © Ivan Paulovich. All rights reserved.
 // </copyright>
 
-namespace Domain.Accounts.Debits
+namespace Domain.Debits
 {
     using System.Collections.Generic;
     using System.Linq;

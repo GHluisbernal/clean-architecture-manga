@@ -1,4 +1,4 @@
-﻿namespace Domain.Accounts.ValueObjects
+﻿namespace Domain.ValueObjects
 {
     using System;
 

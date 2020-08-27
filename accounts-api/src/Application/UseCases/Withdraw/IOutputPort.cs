@@ -4,8 +4,8 @@
 
 namespace Application.UseCases.Withdraw
 {
-    using Domain.Accounts;
-    using Domain.Accounts.Debits;
+    using Domain;
+    using Domain.Debits;
     using Services;
 
     /// <summary>

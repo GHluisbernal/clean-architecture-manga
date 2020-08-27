@@ -3,8 +3,8 @@ namespace UnitTests.Presenters
     using System;
     using Application.Services;
     using Application.UseCases.Withdraw;
-    using Domain.Accounts;
-    using Domain.Accounts.Debits;
+    using Domain;
+    using Domain.Debits;
 
     public sealed class WithdrawPresenterFake : IOutputPort
     {

@@ -5,9 +5,9 @@
 namespace Infrastructure.DataAccess
 {
     using System;
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
-    using Domain.Accounts.Debits;
+    using Domain;
+    using Domain.Credits;
+    using Domain.Debits;
     using Microsoft.EntityFrameworkCore;
 
     /// <inheritdoc />

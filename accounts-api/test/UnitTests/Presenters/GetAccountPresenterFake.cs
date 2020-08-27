@@ -2,7 +2,7 @@ namespace UnitTests.Presenters
 {
     using Application.Services;
     using Application.UseCases.GetAccount;
-    using Domain.Accounts;
+    using Domain;
 
     public sealed class GetAccountPresenterFake : IOutputPort
     {

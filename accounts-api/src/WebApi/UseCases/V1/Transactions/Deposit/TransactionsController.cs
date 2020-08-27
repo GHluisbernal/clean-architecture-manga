@@ -5,8 +5,8 @@ namespace WebApi.UseCases.V1.Transactions.Deposit
     using System.Threading.Tasks;
     using Application.Services;
     using Application.UseCases.Deposit;
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
+    using Domain;
+    using Domain.Credits;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;

@@ -6,8 +6,8 @@ namespace UnitTests.Presenters
 {
     using Application.Services;
     using Application.UseCases.Deposit;
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
+    using Domain;
+    using Domain.Credits;
 
     /// <summary>
     ///     Deposit Presenter.

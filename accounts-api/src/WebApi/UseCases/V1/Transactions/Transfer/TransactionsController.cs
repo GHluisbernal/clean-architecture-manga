@@ -5,9 +5,9 @@ namespace WebApi.UseCases.V1.Transactions.Transfer
     using System.Threading.Tasks;
     using Application.Services;
     using Application.UseCases.Transfer;
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
-    using Domain.Accounts.Debits;
+    using Domain;
+    using Domain.Credits;
+    using Domain.Debits;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -62,10 +62,10 @@ namespace WebApi.UseCases.V1.Transactions.Transfer
         [ApiConventionMethod(typeof(CustomApiConventions), nameof(CustomApiConventions.Patch))]
         public async Task<IActionResult> Transfer(
             [FromServices] ITransferUseCase useCase,
-            [FromRoute][Required] Guid accountId,
-            [FromRoute][Required] Guid destinationAccountId,
-            [FromForm][Required] decimal amount,
-            [FromForm][Required] string currency)
+            [FromRoute] [Required] Guid accountId,
+            [FromRoute] [Required] Guid destinationAccountId,
+            [FromForm] [Required] decimal amount,
+            [FromForm] [Required] string currency)
         {
             useCase.SetOutputPort(this);
 

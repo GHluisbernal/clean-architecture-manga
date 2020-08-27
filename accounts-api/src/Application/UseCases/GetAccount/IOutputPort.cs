@@ -4,7 +4,7 @@
 
 namespace Application.UseCases.GetAccount
 {
-    using Domain.Accounts;
+    using Domain;
     using Services;
 
     /// <summary>

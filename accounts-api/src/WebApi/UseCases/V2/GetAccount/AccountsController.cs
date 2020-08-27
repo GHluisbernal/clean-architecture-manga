@@ -6,7 +6,7 @@ namespace WebApi.UseCases.V2.GetAccount
     using System.Threading.Tasks;
     using Application.Services;
     using Application.UseCases.GetAccount;
-    using Domain.Accounts;
+    using Domain;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;

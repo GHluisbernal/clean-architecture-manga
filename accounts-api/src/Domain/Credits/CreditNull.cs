@@ -2,7 +2,7 @@
 // Copyright © Ivan Paulovich. All rights reserved.
 // </copyright>
 
-namespace Domain.Accounts.Credits
+namespace Domain.Credits
 {
     using System;
     using ValueObjects;

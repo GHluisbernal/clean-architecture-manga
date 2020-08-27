@@ -4,7 +4,7 @@
 
 namespace Application.UseCases.OpenAccount
 {
-    using Domain.Accounts;
+    using Domain;
     using Services;
 
     /// <summary>

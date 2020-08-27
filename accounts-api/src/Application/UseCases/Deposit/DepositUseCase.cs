@@ -6,9 +6,9 @@ namespace Application.UseCases.Deposit
 {
     using System;
     using System.Threading.Tasks;
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
-    using Domain.Accounts.ValueObjects;
+    using Domain;
+    using Domain.Credits;
+    using Domain.ValueObjects;
     using Services;
 
     /// <inheritdoc />

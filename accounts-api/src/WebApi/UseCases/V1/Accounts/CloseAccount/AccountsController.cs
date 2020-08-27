@@ -5,7 +5,7 @@ namespace WebApi.UseCases.V1.Accounts.CloseAccount
     using System.Threading.Tasks;
     using Application.Services;
     using Application.UseCases.CloseAccount;
-    using Domain.Accounts;
+    using Domain;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;

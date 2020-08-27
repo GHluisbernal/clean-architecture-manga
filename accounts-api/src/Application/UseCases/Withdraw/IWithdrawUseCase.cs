@@ -18,7 +18,7 @@ namespace Application.UseCases.Withdraw
     public interface IWithdrawUseCase
     {
         /// <summary>
-        /// Executes the use case.
+        ///     Executes the use case.
         /// </summary>
         /// <param name="accountId">AccountId.</param>
         /// <param name="amount">Positive amount to withdraw.</param>

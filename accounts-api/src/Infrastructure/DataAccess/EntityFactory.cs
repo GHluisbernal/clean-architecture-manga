@@ -5,10 +5,10 @@
 namespace Infrastructure.DataAccess
 {
     using System;
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
-    using Domain.Accounts.Debits;
-    using Domain.Accounts.ValueObjects;
+    using Domain;
+    using Domain.Credits;
+    using Domain.Debits;
+    using Domain.ValueObjects;
 
     /// <summary>
     ///     <see

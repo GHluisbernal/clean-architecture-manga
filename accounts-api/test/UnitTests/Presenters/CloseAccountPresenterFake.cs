@@ -2,7 +2,7 @@ namespace UnitTests.Presenters
 {
     using Application.Services;
     using Application.UseCases.CloseAccount;
-    using Domain.Accounts;
+    using Domain;
 
     /// <summary>
     ///     Close Account Presenter.

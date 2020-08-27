@@ -4,9 +4,9 @@
 
 namespace Application.UseCases.Transfer
 {
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
-    using Domain.Accounts.Debits;
+    using Domain;
+    using Domain.Credits;
+    using Domain.Debits;
     using Services;
 
     /// <summary>

@@ -4,7 +4,7 @@ namespace WebApi.UseCases.V1.Accounts.OpenAccount
     using System.Threading.Tasks;
     using Application.Services;
     using Application.UseCases.OpenAccount;
-    using Domain.Accounts;
+    using Domain;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;

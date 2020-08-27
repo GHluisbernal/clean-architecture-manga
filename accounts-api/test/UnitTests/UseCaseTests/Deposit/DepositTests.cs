@@ -2,8 +2,8 @@ namespace UnitTests.UseCaseTests.Deposit
 {
     using System.Threading.Tasks;
     using Application.UseCases.Deposit;
-    using Domain.Accounts.Credits;
-    using Domain.Accounts.ValueObjects;
+    using Domain.Credits;
+    using Domain.ValueObjects;
     using Infrastructure.DataAccess;
     using Presenters;
     using Xunit;
@@ -28,9 +28,9 @@ namespace UnitTests.UseCaseTests.Deposit
             sut.SetOutputPort(presenter);
 
             await sut.Execute(
-                    SeedData.DefaultAccountId.Id,
-                    amount,
-                    Currency.Dollar.Code);
+                SeedData.DefaultAccountId.Id,
+                amount,
+                Currency.Dollar.Code);
 
             Credit? output = presenter.Credit!;
             Assert.Equal(amount, output.Amount.Amount);
@@ -50,9 +50,9 @@ namespace UnitTests.UseCaseTests.Deposit
             sut.SetOutputPort(presenter);
 
             await sut.Execute(
-                    SeedData.DefaultAccountId.Id,
-                    amount,
-                    Currency.Dollar.Code);
+                SeedData.DefaultAccountId.Id,
+                amount,
+                Currency.Dollar.Code);
 
             Assert.True(presenter.ModelState!.IsInvalid);
         }

@@ -2,7 +2,7 @@
 // Copyright © Ivan Paulovich. All rights reserved.
 // </copyright>
 
-namespace Domain.Accounts.Debits
+namespace Domain.Debits
 {
     using System;
     using ValueObjects;
@@ -36,6 +36,17 @@ namespace Domain.Accounts.Debits
         public DateTime TransactionDate { get; }
 
         /// <summary>
+        ///     Gets the AccountId.
+        /// </summary>
+        public AccountId AccountId { get; }
+
+        public Account? Account { get; set; }
+
+        public decimal Value => this.Amount.Amount;
+
+        public string Currency => this.Amount.Currency.Code;
+
+        /// <summary>
         ///     Gets or sets Id.
         /// </summary>
         public DebitId DebitId { get; }
@@ -46,21 +57,10 @@ namespace Domain.Accounts.Debits
         public PositiveMoney Amount { get; }
 
         /// <summary>
-        ///     Gets the AccountId.
-        /// </summary>
-        public AccountId AccountId { get; }
-
-        public Account? Account { get; set; }
-
-        /// <summary>
         ///     Calculate the sum of positive amounts.
         /// </summary>
         /// <param name="amount">Positive amount.</param>
         /// <returns>The positive sum.</returns>
         public Money Sum(Money amount) => this.Amount.Add(amount);
-
-        public decimal Value => this.Amount.Amount;
-
-        public string Currency => this.Amount.Currency.Code;
     }
 }

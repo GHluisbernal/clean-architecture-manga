@@ -6,9 +6,9 @@ namespace Application.UseCases.Withdraw
 {
     using System;
     using System.Threading.Tasks;
-    using Domain.Accounts;
-    using Domain.Accounts.Debits;
-    using Domain.Accounts.ValueObjects;
+    using Domain;
+    using Domain.Debits;
+    using Domain.ValueObjects;
     using Services;
 
     /// <inheritdoc />

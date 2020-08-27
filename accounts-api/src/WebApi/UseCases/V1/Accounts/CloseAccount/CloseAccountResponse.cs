@@ -2,7 +2,7 @@ namespace WebApi.UseCases.V1.Accounts.CloseAccount
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using Domain.Accounts;
+    using Domain;
 
     /// <summary>
     ///     The response Close an Account.

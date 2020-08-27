@@ -1,6 +1,5 @@
 namespace WebApi.Modules.Common.Swagger
 {
-    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Reflection;
@@ -10,7 +9,6 @@ namespace WebApi.Modules.Common.Swagger
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Options;
     using Microsoft.Extensions.PlatformAbstractions;
-    using Microsoft.OpenApi.Models;
     using Swashbuckle.AspNetCore.SwaggerGen;
 
     /// <summary>
@@ -41,7 +39,6 @@ namespace WebApi.Modules.Common.Swagger
                 {
                     c.IncludeXmlComments(XmlCommentsFilePath);
                     c.OperationFilter<SecurityRequirementsOperationFilter>();
-
                 });
 
             return services;
@@ -64,7 +61,6 @@ namespace WebApi.Modules.Common.Swagger
                         options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
                             description.GroupName.ToUpperInvariant());
                     }
-
                 });
 
             return app;

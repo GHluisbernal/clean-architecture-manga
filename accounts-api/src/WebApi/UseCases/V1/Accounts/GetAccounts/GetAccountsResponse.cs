@@ -2,7 +2,7 @@ namespace WebApi.UseCases.V1.Accounts.GetAccounts
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Domain.Accounts;
+    using Domain;
     using ViewModels;
 
     /// <summary>

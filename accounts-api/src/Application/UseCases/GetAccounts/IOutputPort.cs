@@ -5,7 +5,7 @@
 namespace Application.UseCases.GetAccounts
 {
     using System.Collections.Generic;
-    using Domain.Accounts;
+    using Domain;
 
     /// <summary>
     ///     Output Port.

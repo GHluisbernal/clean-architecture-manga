@@ -5,8 +5,8 @@
 namespace Infrastructure.DataAccess.Configuration
 {
     using System;
-    using Domain.Accounts.Debits;
-    using Domain.Accounts.ValueObjects;
+    using Domain.Debits;
+    using Domain.ValueObjects;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

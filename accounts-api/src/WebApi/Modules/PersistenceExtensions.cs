@@ -1,7 +1,7 @@
 namespace WebApi.Modules
 {
     using Application.Services;
-    using Domain.Accounts;
+    using Domain;
     using Infrastructure.DataAccess;
     using Infrastructure.DataAccess.Repositories;
     using Microsoft.EntityFrameworkCore;

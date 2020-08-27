@@ -8,10 +8,10 @@ namespace Infrastructure.DataAccess.Repositories
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
-    using Domain.Accounts.Debits;
-    using Domain.Accounts.ValueObjects;
+    using Domain;
+    using Domain.Credits;
+    using Domain.Debits;
+    using Domain.ValueObjects;
     using Microsoft.EntityFrameworkCore;
 
     /// <inheritdoc />
@@ -72,28 +72,6 @@ namespace Infrastructure.DataAccess.Repositories
             return AccountNull.Instance;
         }
 
-        private async Task<IAccount> LoadTransactions(AccountId accountId, Account findAccount)
-        {
-            List<Credit> credits = await this._context
-                                .Credits
-                                .Where(e => e.AccountId.Equals(accountId))
-                                .ToListAsync()
-                                .ConfigureAwait(false);
-
-            List<Debit> debits = await this._context
-                .Debits
-                .Where(e => e.AccountId.Equals(accountId))
-                .ToListAsync()
-                .ConfigureAwait(false);
-
-            findAccount.CreditsCollection
-                .AddRange(credits);
-            findAccount.DebitsCollection
-                .AddRange(debits);
-
-            return findAccount;
-        }
-
         /// <inheritdoc />
         public async Task Update(Account account, Credit credit) => await this._context
             .Credits
@@ -132,6 +110,28 @@ namespace Infrastructure.DataAccess.Repositories
                 .ConfigureAwait(false);
 
             return accounts;
+        }
+
+        private async Task<IAccount> LoadTransactions(AccountId accountId, Account findAccount)
+        {
+            List<Credit> credits = await this._context
+                .Credits
+                .Where(e => e.AccountId.Equals(accountId))
+                .ToListAsync()
+                .ConfigureAwait(false);
+
+            List<Debit> debits = await this._context
+                .Debits
+                .Where(e => e.AccountId.Equals(accountId))
+                .ToListAsync()
+                .ConfigureAwait(false);
+
+            findAccount.CreditsCollection
+                .AddRange(credits);
+            findAccount.DebitsCollection
+                .AddRange(debits);
+
+            return findAccount;
         }
     }
 }

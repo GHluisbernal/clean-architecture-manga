@@ -1,14 +1,14 @@
 namespace WebApi.Modules.Common
 {
-    using Microsoft.Extensions.DependencyInjection;
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.Extensions.DependencyInjection;
 
     /// <summary>
     ///     CORS Extensions.
     /// </summary>
     public static class CorsExtensions
     {
-        const string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        private const string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         /// <summary>
         ///     Add CORS.

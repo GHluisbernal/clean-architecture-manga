@@ -7,10 +7,10 @@ namespace Infrastructure.DataAccess.Repositories
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
-    using Domain.Accounts.Debits;
-    using Domain.Accounts.ValueObjects;
+    using Domain;
+    using Domain.Credits;
+    using Domain.Debits;
+    using Domain.ValueObjects;
 
     /// <inheritdoc />
     public sealed class AccountRepositoryFake : IAccountRepository

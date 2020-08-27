@@ -3,9 +3,9 @@ namespace UnitTests.Presenters
     using System;
     using Application.Services;
     using Application.UseCases.Transfer;
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
-    using Domain.Accounts.Debits;
+    using Domain;
+    using Domain.Credits;
+    using Domain.Debits;
 
     public sealed class TransferPresenterFake : IOutputPort
     {

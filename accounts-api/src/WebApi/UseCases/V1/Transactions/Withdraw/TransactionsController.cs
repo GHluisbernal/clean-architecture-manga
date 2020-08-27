@@ -5,8 +5,8 @@ namespace WebApi.UseCases.V1.Transactions.Withdraw
     using System.Threading.Tasks;
     using Application.Services;
     using Application.UseCases.Withdraw;
-    using Domain.Accounts;
-    using Domain.Accounts.Debits;
+    using Domain;
+    using Domain.Debits;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -57,9 +57,9 @@ namespace WebApi.UseCases.V1.Transactions.Withdraw
         [ApiConventionMethod(typeof(CustomApiConventions), nameof(CustomApiConventions.Patch))]
         public async Task<IActionResult> Withdraw(
             [FromServices] IWithdrawUseCase useCase,
-            [FromRoute][Required] Guid accountId,
-            [FromForm][Required] decimal amount,
-            [FromForm][Required] string currency)
+            [FromRoute] [Required] Guid accountId,
+            [FromForm] [Required] decimal amount,
+            [FromForm] [Required] string currency)
         {
             useCase.SetOutputPort(this);
 

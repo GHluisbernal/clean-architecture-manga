@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Application.Services;
-    using Domain.Accounts.ValueObjects;
+    using Domain.ValueObjects;
 
     /// <summary>
     ///     Fake implementation of the Exchange Service using hardcoded rates

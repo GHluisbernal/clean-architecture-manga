@@ -5,7 +5,7 @@
 namespace Application.UseCases.Withdraw
 {
     using System;
-    using Domain.Accounts.ValueObjects;
+    using Domain.ValueObjects;
     using Services;
 
     /// <summary>
@@ -16,7 +16,6 @@ namespace Application.UseCases.Withdraw
         /// <summary>
         ///     Initializes a new instance of the <see cref="WithdrawInput" /> class.
         /// </summary>
-
         internal WithdrawInput(Guid accountId, decimal amount, string currency)
         {
             this.ModelState = new Notification();

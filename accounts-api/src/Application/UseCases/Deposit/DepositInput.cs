@@ -5,7 +5,7 @@
 namespace Application.UseCases.Deposit
 {
     using System;
-    using Domain.Accounts.ValueObjects;
+    using Domain.ValueObjects;
     using Services;
 
     /// <summary>

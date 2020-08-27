@@ -2,7 +2,7 @@ namespace WebApi.ViewModels
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using Domain.Accounts.Debits;
+    using Domain.Debits;
 
     /// <summary>
     ///     Debit.

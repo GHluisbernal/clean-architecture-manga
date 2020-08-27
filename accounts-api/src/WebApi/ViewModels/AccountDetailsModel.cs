@@ -4,9 +4,7 @@ namespace WebApi.ViewModels
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
-    using Domain.Accounts.Debits;
+    using Domain;
 
     /// <summary>
     ///     Account Details.

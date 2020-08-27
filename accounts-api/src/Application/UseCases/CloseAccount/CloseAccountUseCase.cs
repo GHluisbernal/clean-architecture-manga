@@ -6,8 +6,8 @@ namespace Application.UseCases.CloseAccount
 {
     using System;
     using System.Threading.Tasks;
-    using Domain.Accounts;
-    using Domain.Accounts.ValueObjects;
+    using Domain;
+    using Domain.ValueObjects;
     using Services;
 
     /// <inheritdoc />

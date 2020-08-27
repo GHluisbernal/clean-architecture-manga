@@ -2,7 +2,7 @@ namespace UnitTests.Presenters
 {
     using Application.Services;
     using Application.UseCases.OpenAccount;
-    using Domain.Accounts;
+    using Domain;
 
     /// <summary>
     /// </summary>

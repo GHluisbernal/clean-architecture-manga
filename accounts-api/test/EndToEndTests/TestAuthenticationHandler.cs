@@ -3,7 +3,6 @@ namespace EndToEndTests
     using System.Security.Claims;
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
-    using Infrastructure.DataAccess;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
@@ -30,8 +29,7 @@ namespace EndToEndTests
         {
             Claim[] claims =
             {
-                new Claim(ClaimTypes.NameIdentifier, "test"),
-                new Claim(ClaimTypes.Name, "test"),
+                new Claim(ClaimTypes.NameIdentifier, "test"), new Claim(ClaimTypes.Name, "test"),
                 new Claim("id", "92b93e37-0995-4849-a7ed-149e8706d8ef")
             };
 

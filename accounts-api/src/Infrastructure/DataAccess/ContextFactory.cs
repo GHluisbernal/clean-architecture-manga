@@ -4,6 +4,7 @@
 
 namespace Infrastructure.DataAccess
 {
+    using System;
     using System.IO;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Design;
@@ -24,7 +25,7 @@ namespace Infrastructure.DataAccess
             string connectionString = ReadDefaultConnectionStringFromAppSettings();
 
             var builder = new DbContextOptionsBuilder<MangaContext>();
-            System.Console.WriteLine(connectionString);
+            Console.WriteLine(connectionString);
             builder.UseSqlServer(connectionString);
             builder.EnableSensitiveDataLogging();
             return new MangaContext(builder.Options);

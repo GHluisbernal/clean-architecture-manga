@@ -2,7 +2,7 @@ namespace UnitTests.UseCaseTests.Withdraw
 {
     using System.Threading.Tasks;
     using Application.UseCases.Withdraw;
-    using Domain.Accounts;
+    using Domain;
     using Infrastructure.DataAccess;
     using Presenters;
     using Xunit;

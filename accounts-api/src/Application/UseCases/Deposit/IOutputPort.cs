@@ -4,8 +4,8 @@
 
 namespace Application.UseCases.Deposit
 {
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
+    using Domain;
+    using Domain.Credits;
     using Services;
 
     /// <summary>

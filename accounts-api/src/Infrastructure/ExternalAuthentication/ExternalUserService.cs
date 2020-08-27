@@ -17,10 +17,8 @@ namespace Infrastructure.ExternalAuthentication
         /// </summary>
         /// <param name="httpContextAccessor"></param>
         public ExternalUserService(
-            IHttpContextAccessor httpContextAccessor)
-        {
+            IHttpContextAccessor httpContextAccessor) =>
             this._httpContextAccessor = httpContextAccessor;
-        }
 
         /// <inheritdoc />
         public string GetCurrentUserId()

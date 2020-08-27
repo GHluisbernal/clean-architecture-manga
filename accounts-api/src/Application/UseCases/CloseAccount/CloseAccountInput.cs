@@ -5,7 +5,7 @@
 namespace Application.UseCases.CloseAccount
 {
     using System;
-    using Domain.Accounts.ValueObjects;
+    using Domain.ValueObjects;
     using Services;
 
     /// <summary>

@@ -5,9 +5,9 @@ namespace UnitTests.UseCaseTests.CloseAccount
     using Application.UseCases.CloseAccount;
     using Application.UseCases.GetAccount;
     using Application.UseCases.Withdraw;
-    using Domain.Accounts;
-    using Domain.Accounts.Credits;
-    using Domain.Accounts.ValueObjects;
+    using Domain;
+    using Domain.Credits;
+    using Domain.ValueObjects;
     using Infrastructure.DataAccess;
     using Presenters;
     using Xunit;
@@ -35,17 +35,6 @@ namespace UnitTests.UseCaseTests.CloseAccount
             bool actual = account.IsClosingAllowed();
 
             Assert.False(actual);
-        }
-
-        [Fact]
-        public void IsClosingAllowed_Returns_True_When_Account_Does_Not_Has_Funds()
-        {
-            IAccount account = this._fixture.EntityFactory
-                .NewAccount(Guid.NewGuid().ToString(), Currency.Dollar);
-
-            bool actual = account.IsClosingAllowed();
-
-            Assert.True(actual);
         }
 
         [Fact]
@@ -82,6 +71,17 @@ namespace UnitTests.UseCaseTests.CloseAccount
             await sut.Execute(SeedData.DefaultAccountId.Id);
 
             Assert.Equal(SeedData.DefaultAccountId.Id, closeAccountPresenter.Account!.AccountId.Id);
+        }
+
+        [Fact]
+        public void IsClosingAllowed_Returns_True_When_Account_Does_Not_Has_Funds()
+        {
+            IAccount account = this._fixture.EntityFactory
+                .NewAccount(Guid.NewGuid().ToString(), Currency.Dollar);
+
+            bool actual = account.IsClosingAllowed();
+
+            Assert.True(actual);
         }
     }
 }
