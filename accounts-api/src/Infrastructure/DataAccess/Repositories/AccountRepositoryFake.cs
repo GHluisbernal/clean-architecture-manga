@@ -85,9 +85,16 @@ namespace Infrastructure.DataAccess.Repositories
                 .ConfigureAwait(false);
         }
 
-        public Task<IList<Account>> GetAccounts(string externalUserId)
+        /// <inheritdoc />
+        public async Task<IList<Account>> GetAccounts(string externalUserId)
         {
-            throw new System.NotImplementedException();
+            var accounts = this._context
+                .Accounts
+                .Where(e => e.ExternalUserId == externalUserId)
+                .ToList();
+
+            return await Task.FromResult(accounts)
+                .ConfigureAwait(false);
         }
 
         /// <inheritdoc />
