@@ -29,11 +29,9 @@ We also support the React client:
 
 ## Build & Run
 
-Run the following command:
+Run the following commands:
 
 ```sh
-dotnet dev-certs https --clean
-dotnet dev-certs https -ep $env:USERPROFILE\.aspnet\https\aspnetapp.pfx -p MyCertificatePassword
 cd ./docker
 docker-compose build
 docker-compose up
@@ -41,17 +39,24 @@ docker-compose up
 
 Then the following containers should be runnning:
 
-| Application 	    | Protocol | Port 	|
-|------------------ |--------- |-------	|
-| Wallet SPA 	      | HTTPS 	 | 5010 	|
-| Accounts API 	    | HTTPS 	 | 5005 	|
-| Identity Server 	| HTTPS 	 | 5000 	|
-| SQL Server 	      | TCP 	   | 5033 	|
+| Application 	    | Port 	| Protocol |
+|------------------ | ----- |--------- |
+| Wallet SPA 	      | 5010 	| HTTPS 	 |
+| Accounts API 	    | 5005 	| HTTPS 	 |
+| Identity Server 	| 5000 	| HTTPS 	 |
+| SQL Server 	      | 1433 	| TCP 	   |
 
 Browse to `https://localhost:5010` and click on Log In. If you are move familiar with dotnet commands, start each service individually:
 
 <details>
     <summary>Expand to get the dotnet run steps.</summary>
+
+### Generate Self Signed Certificate
+
+```sh
+dotnet dev-certs https --clean
+dotnet dev-certs https -ep $env:USERPROFILE\.aspnet\https\aspnetapp.pfx -p MyCertificatePassword
+```
 
 ### Spin up SQL Server in a Docker container
 
