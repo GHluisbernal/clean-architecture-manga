@@ -19,7 +19,7 @@ namespace EndToEndTests
                     new Dictionary<string, string>
                     {
                         ["PersistenceModule:UseFake"] = "false",
-                        ["PersistenceModule:DefaultConnection"] = "Server=localhost;User Id=sa;Password=<YourStrong!Passw0rd>;Data Source=Accounts",
+                        ["PersistenceModule:DefaultConnection"] = "Server=localhost;User Id=sa;Password=<YourStrong!Passw0rd>;Database=Accounts;",
                         ["CurrencyExchangeModule:UseFake"] = "false"
                     });
             }).ConfigureServices(services =>

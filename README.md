@@ -33,7 +33,9 @@ Run the following commands:
 
 ```sh
 cd ./docker
-docker-compose build
+docker-compose up -d --no-deps --build sql1
+dotnet tool update --global dotnet-ef --version 3.1.6
+dotnet ef database update --project ../accounts-api/src/Infrastructure --startup-project ../accounts-api/src/WebApi
 docker-compose up
 ```
 
