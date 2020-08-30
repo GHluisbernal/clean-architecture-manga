@@ -41,12 +41,12 @@ Then the following containers should be runnning:
 
 | Application 	    | Port 	| Protocol |
 |------------------ | ----- |--------- |
-| Wallet SPA 	      | 5010 	| HTTPS 	 |
-| Accounts API 	    | 5005 	| HTTPS 	 |
-| Identity Server 	| 5000 	| HTTPS 	 |
-| SQL Server 	      | 1433 	| TCP 	   |
+| Wallet SPA 	    | 5010 	| HTTPS    |
+| Accounts API 	    | 5005 	| HTTPS    |
+| Identity Server 	| 5000 	| HTTPS	   |
+| SQL Server 	    | 1433 	| TCP 	   |
 
-Browse to `https://localhost:5010` and click on Log In. If you are move familiar with dotnet commands, start each service individually:
+Browse to `https://localhost:5010` then click on Log In. If you are prefer dotnet commands then start each service individually:
 
 <details>
     <summary>Expand to get the dotnet run steps.</summary>

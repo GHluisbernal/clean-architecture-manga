@@ -8,7 +8,7 @@
     {
         public StandardFixture()
         {
-            const string connectionString = "Server=host.docker.internal;User Id=sa;Password=<YourStrong!Passw0rd>;Data Source=Accounts";
+            const string connectionString = "Server=localhost;User Id=sa;Password=<YourStrong!Passw0rd>;Data Source=Accounts";
 
             DbContextOptions<MangaContext> options = new DbContextOptionsBuilder<MangaContext>()
                 .UseSqlServer(connectionString)

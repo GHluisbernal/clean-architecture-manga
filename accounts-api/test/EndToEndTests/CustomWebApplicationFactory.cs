@@ -18,7 +18,9 @@ namespace EndToEndTests
                 config.AddInMemoryCollection(
                     new Dictionary<string, string>
                     {
-                        ["PersistenceModule:UseFake"] = "false", ["CurrencyExchangeModule:UseFake"] = "false"
+                        ["PersistenceModule:UseFake"] = "false",
+                        ["PersistenceModule:DefaultConnection"] = "Server=localhost;User Id=sa;Password=<YourStrong!Passw0rd>;Data Source=Accounts",
+                        ["CurrencyExchangeModule:UseFake"] = "false"
                     });
             }).ConfigureServices(services =>
         {
