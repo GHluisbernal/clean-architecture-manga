@@ -57,16 +57,15 @@ namespace WebApi
                     .UseHsts();
             }
 
-            app.UseHttpsRedirection()
+            app
+                .UseHealthChecks()
+                .UseHttpsRedirection()
                 .UseCustomCors()
-                .UseStaticFiles()
-                .UseMetricServer()
-                .UseMangaHttpMetrics()
+                .UseCustomHttpMetrics()
                 .UseRouting()
                 .UseVersionedSwagger(provider, this.Configuration)
                 .UseAuthentication()
                 .UseAuthorization()
-                .UseHealthChecks()
                 .UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }

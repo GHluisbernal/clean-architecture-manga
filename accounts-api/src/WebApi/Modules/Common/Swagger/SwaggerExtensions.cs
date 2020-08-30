@@ -9,6 +9,7 @@ namespace WebApi.Modules.Common.Swagger
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Options;
     using Microsoft.Extensions.PlatformAbstractions;
+    using Microsoft.OpenApi.Models;
     using Swashbuckle.AspNetCore.SwaggerGen;
 
     /// <summary>
@@ -38,7 +39,26 @@ namespace WebApi.Modules.Common.Swagger
                 c =>
                 {
                     c.IncludeXmlComments(XmlCommentsFilePath);
-                    c.OperationFilter<SecurityRequirementsOperationFilter>();
+                    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                    {
+                        In = ParameterLocation.Header,
+                        Description = "Please insert JWT with Bearer into field",
+                        Name = "Authorization",
+                        Type = SecuritySchemeType.ApiKey
+                    });
+                    c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                        },
+                        new string[] { }
+                    }
+                    });
                 });
 
             return services;

@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["accounts-api/src/WebApi/WebApi.csproj", "accounts-api/src/WebApi/"]
 COPY ["accounts-api/src/Application/Application.csproj", "accounts-api/src/Application/"]
-COPY ["accounts-api/src/Domain.Accounts/Domain.csproj", "accounts-api/src/Domain.Accounts/"]
+COPY ["accounts-api/src/Domain/Domain.csproj", "accounts-api/src/Domain/"]
 COPY ["accounts-api/src/Infrastructure/Infrastructure.csproj", "accounts-api/src/Infrastructure/"]
 RUN dotnet restore "accounts-api/src/WebApi/WebApi.csproj"
 COPY . .

@@ -13,7 +13,7 @@ export class Home extends PureComponent {
         this.state = {
             isLoggedIn: false,
             userName: null,
-            produceItems: []
+            accounts: []
         }
     }
 
@@ -25,10 +25,10 @@ export class Home extends PureComponent {
                     baseURL: 'https://localhost:5005',
                     headers: { 'Authorization': 'Bearer ' + user.access_token }
                 }).then((response) => {
-                    this.setState({ produceItems: response.data })
+                    this.setState({ accounts: response.data.accounts })
                 }).catch(e => console.error(e))
             } else {
-                this.setState({ isLoggedIn: false, userName: null, produceItems: [] });
+                this.setState({ isLoggedIn: false, userName: null, accounts: [] });
             }
         });
     }
@@ -65,9 +65,26 @@ export class Home extends PureComponent {
 
                 <div>(Auth Protected Resources)</div>
                 <div>My Produce Items</div>
-                {this.state.produceItems.map((produceItem) => {
-                    return <div>{produceItem}</div>
-                })}
+                <table className="table table-striped" aria-labelledby="tabelLabel">
+                    <thead>
+                    <tr>
+                        <th>Account</th>
+                        <th>Current Balance</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {this.state.accounts.map((account) =>
+                        {
+                            return <tr key={account.accountId}>
+                                <td>
+                                    <a className="text-dark" href={`/transactions/${account.accountId}`}>Transactions</a>
+                                </td>
+                                <td>{account.currentBalance}</td>
+                            </tr>;
+                        }
+                    )}
+                    </tbody>
+                </table>
             </React.Fragment>
         )
     }
