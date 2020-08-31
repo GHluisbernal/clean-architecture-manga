@@ -31,24 +31,30 @@ We also support the React client:
 
 Run the following commands:
 
+Spin up SQL Server:
+
 ```sh
-cd ./docker
-docker-compose up -d --no-deps --build sql1
-dotnet tool update --global dotnet-ef --version 3.1.6
+cd .docker
+docker-compose build
+docker-compose up -d sql1
+dotnet tool update --global dotnet-ef --version 3.1.7
 dotnet ef database update --project ../accounts-api/src/Infrastructure --startup-project ../accounts-api/src/WebApi
-docker-compose up
+docker-compose up -d
 ```
 
 Then the following containers should be runnning:
 
 | Application 	    | Port 	| Protocol |
 |------------------ | ----- |--------- |
-| Wallet SPA 	    | 5010 	| HTTPS    |
+| Wallet SPA 	      | 5010 	| HTTPS    |
 | Accounts API 	    | 5005 	| HTTPS    |
 | Identity Server 	| 5000 	| HTTPS	   |
-| SQL Server 	    | 1433 	| TCP 	   |
+| SQL Server 	      | 1433 	| TCP 	   |
 
-Browse to `https://localhost:5010` then click on Log In. If you are prefer dotnet commands then start each service individually:
+Browse to `https://localhost:5010` then click on Log In. Trust the [self-signed certificate](https://stackoverflow.com/questions/21397809/create-a-trusted-self-signed-ssl-cert-for-localhost-for-use-with-express-node).
+
+
+If you are prefer dotnet commands then start each service individually:
 
 <details>
     <summary>Expand to get the dotnet run steps.</summary>

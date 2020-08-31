@@ -30,7 +30,7 @@
     </EnvironmentVariables>
     <ApplicationURL>https://localhost:5001</ApplicationURL>
   </PropertyGroup>
-  
+
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Production' ">
     <StartAction>Project</StartAction>
     <ExternalConsole>true</ExternalConsole>
@@ -59,6 +59,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Microsoft -->
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -74,15 +75,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Third party -->
     <PackageReference Include="prometheus-net.AspNetCore" Version="3.6.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
     <PackageReference Include="EPPlus.Core" Version="1.5.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Local -->
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
-
 
 </Project>

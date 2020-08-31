@@ -13,7 +13,7 @@ jobs:
         docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 --name sql1 -d mcr.microsoft.com/mssql/server:2017-latest
         sleep 10
         pushd accounts-api
-        dotnet tool update --global dotnet-ef --version 3.1.6
+        dotnet tool update --global dotnet-ef --version 3.1.7
         dotnet ef database update --project src/Infrastructure --startup-project src/WebApi
         popd
         dotnet build

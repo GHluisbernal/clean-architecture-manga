@@ -4,8 +4,8 @@ services:
   accounts-api:
     image: ${DOCKER_REGISTRY-}accounts
     build:
-      context: ../
-      dockerfile: accounts-api/src/WebApi/Dockerfile
+      context: ../accounts-api/
+      dockerfile: src/WebApi/Dockerfile
   identity-server:
     image: ${DOCKER_REGISTRY-}identityserver
     build:
